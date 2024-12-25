@@ -12,45 +12,49 @@ const fetchData = async () => {
 };
 
 /**
+ * @function createTdElement - td要素を生成する関数
+ * @param {string} textContent - td要素に設定するテキストコンテンツ
+ * @param {Array<string>} classes - td要素に追加するクラスの配列
+ * @returns {HTMLElement} - 生成されたtd要素
+ */
+const createTdElement = (textContent, classes) => {
+  const tdElement = document.createElement("td");
+  tdElement.textContent = textContent;
+  classes.forEach((cls) => tdElement.classList.add(cls));
+  return tdElement;
+};
+
+/**
  * @function renderTable - 受け取ったJSONを元にDOMを生成する関数
  * @param {Array} usersJsonData - ユーザーデータの配列
+ * @returns {void}
  */
 const renderTable = (usersJsonData) => {
   usersJsonData.forEach((userData) => {
-    // idを取得
-    const idTdElement = document.createElement("td");
-    idTdElement.textContent = userData.id;
-    idTdElement.classList.add("border", "p-2");
-
-    // 名前を取得
-    const nameTdElement = document.createElement("td");
-    nameTdElement.textContent = userData.name;
-    idTdElement.classList.add("border", "p-2");
-    nameTdElement.classList.add("border", "p-2");
-
-    // 電話番号を取得
-    const phoneTdElement = document.createElement("td");
-    phoneTdElement.textContent = userData.phone;
-    phoneTdElement.classList.add("border", "p-2");
-
-    // メールアドレスを取得
-    const emailTdElement = document.createElement("td");
-    emailTdElement.textContent = userData.email;
-    emailTdElement.classList.add("border", "p-2");
-
-    // テーブル行を生成
+    // tdタグを生成
     const trElement = document.createElement("tr");
-    trElement.appendChild(idTdElement);
-    trElement.appendChild(nameTdElement);
-    trElement.appendChild(phoneTdElement);
-    trElement.appendChild(emailTdElement);
+    // tdタグに付与するクラス属性
+    const classes = ["border", "p-2"];
+    // tdタグに表示するデータのキー
+    const keys = ["id", "name", "phone", "email"];
 
-    // テーブルに行を追加
+    /**
+     * キーを元に。繰り返し処理でtdタグを生成し、trタグに追加
+     */
+    keys.forEach((key) => {
+      const tdElement = createTdElement(userData[key], classes);
+      trElement.appendChild(tdElement);
+    });
+
+    // 生成したtrタグをtable要素に追加
     const tableElement = document.querySelector("#table-body");
     tableElement.appendChild(trElement);
   });
 };
 
+/**
+ * @function init - 初期化関数
+ */
 const init = async () => {
   try {
     const usersJsonData = await fetchData();

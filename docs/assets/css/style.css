@@ -593,8 +593,16 @@ video {
   margin-right: auto;
 }
 
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
 .table {
   display: table;
+}
+
+.w-full {
+  width: 100%;
 }
 
 .min-w-\[700px\] {
@@ -615,6 +623,16 @@ video {
 
 .border {
   border-width: 1px;
+}
+
+.bg-gray-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
+}
+
+.bg-gray-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity, 1));
 }
 
 .p-2 {

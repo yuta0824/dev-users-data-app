@@ -3,25 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TODOアプリ</title>
+    <title>【APIデータ取得】非同期通信練習課題</title>
     <meta
       name="description"
-      content="デイトラWeb開発コース フロントエンド開発編 JavaScriptを用いたTODOアプリの実装実演の練習課題です"
+      content="デイトラWeb開発コース フロントエンド開発編 JavaScriptの非同期通信の練習課題です"
     />
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body class="container mx-auto p-4">
-    <table class="min-w-[700px] overflow-x-scroll" aria-label="ユーザー情報">
+    <table
+      class="min-w-[700px] overflow-x-scroll w-full"
+      aria-label="ユーザー情報"
+    >
       <thead>
         <tr>
-          <th class="border p-2">ID</th>
-          <th class="border p-2">名前</th>
-          <th class="border p-2">電話番号</th>
-          <th class="border p-2">メールアドレス</th>
+          <th class="border p-2 bg-gray-100">ID</th>
+          <th class="border p-2 bg-gray-100">名前</th>
+          <th class="border p-2 bg-gray-100">電話番号</th>
+          <th class="border p-2 bg-gray-100">メールアドレス</th>
         </tr>
       </thead>
       <tbody id="table-body">
-        <!-- ここにデータが表示されます -->
+        <!-- ここにAPIで取得したデータが表示されます -->
       </tbody>
     </table>
 
