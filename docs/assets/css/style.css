@@ -597,8 +597,20 @@ video {
   display: table;
 }
 
+.min-w-\[700px\] {
+  min-width: 700px;
+}
+
 .resize {
   resize: both;
+}
+
+.overflow-x-auto {
+  overflow-x: auto;
+}
+
+.overflow-x-scroll {
+  overflow-x: scroll;
 }
 
 .border {

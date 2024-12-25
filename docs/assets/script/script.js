@@ -1,21 +1,3 @@
-// /**
-//  * 最大幅に基づいてviewport設定を切り替える関数。
-//  * @function
-//  * @param {number} maxWidth - viewportを固定する際の最大幅
-//  */
-// const switchViewport = (maxWidth) => {
-//   const viewport = document.querySelector('meta[name="viewport"]');
-//   const value =
-//     window.outerWidth > maxWidth
-//       ? "width=device-width,initial-scale=1"
-//       : `width=${maxWidth}`;
-//   if (viewport.getAttribute("content") !== value) {
-//     viewport.setAttribute("content", value);
-//   }
-// };
-// addEventListener("resize", () => switchViewport(600));
-// switchViewport(600);
-
 /**
  * @function fetchData - ユーザーデータを取得する関数
  * @returns {Promise<void>} - 非同期処理のため、Promiseを返す
