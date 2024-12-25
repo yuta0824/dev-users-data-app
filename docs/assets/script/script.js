@@ -1,18 +1,21 @@
 /**
- * @function fetchData - ユーザーデータを取得する関数
- * @returns {Promise<void>} - 非同期処理のため、Promiseを返す
+ * @function fetchData - APIデータを取得する関数
+ * @returns {Promise<Array>} - ユーザーデータの配列を返す
  * @throws {Error} - データ取得に失敗した場合、エラーをスローする
- * @description - ユーザーデータを取得し、テーブルに表示する
- *
  */
 const fetchData = async () => {
   const response = await fetch("https://jsonplaceholder.typicode.com/users");
   if (!response.ok) {
-    console.error("Error", error);
+    throw new Error("データ取得に失敗しました");
   }
-  const usersJsonData = await response.json();
-  console.log(usersJsonData);
+  return await response.json();
+};
 
+/**
+ * @function renderTable - 受け取ったJSONを元にDOMを生成する関数
+ * @param {Array} usersJsonData - ユーザーデータの配列
+ */
+const renderTable = (usersJsonData) => {
   usersJsonData.forEach((userData) => {
     // idを取得
     const idTdElement = document.createElement("td");
@@ -46,7 +49,15 @@ const fetchData = async () => {
     const tableElement = document.querySelector("#table-body");
     tableElement.appendChild(trElement);
   });
-  const userList = document.querySelector("user-list");
 };
 
-fetchData();
+const init = async () => {
+  try {
+    const usersJsonData = await fetchData();
+    renderTable(usersJsonData);
+  } catch (error) {
+    console.error("Error", error);
+  }
+};
+
+init();
